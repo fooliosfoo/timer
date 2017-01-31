@@ -49,7 +49,6 @@ body {
 
     
 <script>
-
     
 //new begins  _________________________________________________________________________________________________________________________________    
 //counter variable for the timer    
@@ -97,10 +96,8 @@ function RstTmeCntr() {
         document.getElementById("amperage").innerHTML= "";
         document.getElementById("seconds").value = "0";
     }
-
 //new ends  _________________________________________________________________________________________________________________________________ 
     
-
 function wattsFunction()
 {
 var x = document.getElementById("widgets").value;
@@ -117,33 +114,30 @@ document.getElementById("cautionTag").innerHTML=dangerous;
 //wattCnv = result / 1000;
 //kw = wattCnv.toFixed(2);
 //document.getElementById("temp").innerHTML=kw + " KW";
-
 //1S Use 120v divider
-//amps = result / 120;
+amps1s = result / 120;
+document.getElementById("amperage").innerHTML=amps1s + " AMPS @ 120V<br />";
 //2S Use 240v divider
-amps = result / 240;
-document.getElementById("amperage").innerHTML=amps + " AMPS";
+amps2s = result / 240;
+document.getElementById("amperage").innerHTML=amps2s + " AMPS @ 240V";
 }
-
 function timeLoad()
 {
-var audio = new Audio('beep.mp3');
-audio.play();
+//var audio = new Audio('beep.mp3');
+//audio.play();
 var secDelay = document.getElementById("seconds").value * 1000;
-setTimeout(function(){playBeep()},secDelay);
+//setTimeout(function(){playBeep()},secDelay);
 var secCntDwn = document.getElementById("seconds").value;
 var myVar=setInterval(function(){myTimer()},1000);
-
 function myTimer()
 {
 	secCntDwn=secCntDwn - 1;
 	document.getElementById("CountDown").innerHTML=secCntDwn + " Seconds Left";
 }
-
 function playBeep()
 {
 //var audio = new Audio('beep.mp3');
-audio.play();
+//audio.play();
 	secCntDwn=secCntDwn - 1;
 	document.getElementById("CountDown").innerHTML=secCntDwn + " Seconds Left";
 clearInterval(myVar);
