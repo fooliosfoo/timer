@@ -28,12 +28,7 @@ body {
 <!--            <button onClick="clearInterval(PlseTimer)" style="height:36px; width:100%; background-color: white; color: green; font-size: 20px;">Stop Timer</button> -->
             <button onClick="RstTmeCntr()" id="StpBttn" style="height:260px; width:100%; background-color: white; color: green; font-size: 20px;">Stop Timer</button>
         <p><span id="TimeCntr">0</span> Seconds</p>
-    
-<!-- new begins _________________________________________________________________________________________________________________________________ -->
 
-<!-- new ends  __________________________________________________________________________________________________________________________________ -->    
-
-    
 <!--    <p><button onclick="timeLoad()" style="height:36px; width:100%; background-color: white; color: green; font-size: 20px;">Start Timer</button></p> 
         <p id="CountDown"></p> -->
     <form id="frm1" action=""> <!--13 sec @ 10 revolutions is just under 40 Amp break point-->
@@ -47,11 +42,21 @@ body {
 	<p id="amperage"></p>
         <p id="cautionTag"></p>
         <!--<p id="temp"></p>-->
-
     
 <script>
-    
-//new begins  _________________________________________________________________________________________________________________________________    
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js').then(function(registration) {
+      // Registration was successful
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }).catch(function(err) {
+      // registration failed :(
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
+}
+	
 //counter variable for the timer    
 var c = 0;
 //variable for removing and adding the start button for the page
@@ -98,8 +103,7 @@ function RstTmeCntr() {
 	document.getElementById("amperage").innerHTML= "";
         document.getElementById("seconds").value = "0";
     }
-//new ends  _________________________________________________________________________________________________________________________________ 
-    
+
 function wattsFunction()
 {
 var x = document.getElementById("widgets").value;
