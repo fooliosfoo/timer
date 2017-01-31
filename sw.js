@@ -1,33 +1,34 @@
-self.addEventListener("activate", function(event) {
-  /* Just like with the install event, event.waitUntil blocks activate on a promise.
-     Activation will fail unless the promise is fulfilled.
-  */
-  console.log('WORKER: activate event in progress.');
+// we'll version our cache (and learn how to delete caches in
+// some other post)
+const cacheName = 'v1::static';
 
-  event.waitUntil(
-    caches
-      /* This method returns a promise which will resolve to an array of available
-         cache keys.
-      */
-      .keys()
-      .then(function (keys) {
-        // We return a promise that settles when all outdated caches are deleted.
-        return Promise.all(
-          keys
-            .filter(function (key) {
-              // Filter by keys that don't start with the latest version prefix.
-              return !key.startsWith(version);
-            })
-            .map(function (key) {
-              /* Return a promise that's fulfilled
-                 when each outdated cache is deleted.
-              */
-              return caches.delete(key);
-            })
-        );
-      })
-      .then(function() {
-        console.log('WORKER: activate completed.');
-      })
+self.addEventListener('install', e => {
+  // once the SW is installed, go ahead and fetch the resources
+  // to make this work offline
+  e.waitUntil(
+    caches.open(cacheName).then(cache => {
+      return cache.addAll([
+        '/',
+        /*
+          DEAR READER,
+          ADD A LIST OF YOUR ASSETS THAT
+          YOU WANT TO WORK WHEN OFFLINE
+          TO THIS ARRAY OF URLS
+        */
+      ]).then(() => self.skipWaiting());
+    })
+  );
+});
+
+// when the browser fetches a url, either response with
+// the cached object or go ahead and fetch the actual url
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    // ensure we check the *right* cache to match against
+    caches.open(cacheName).then(cache => {
+      return cache.match(event.request).then(res => {
+        return res || fetch(event.request)
+      });
+    })
   );
 });
