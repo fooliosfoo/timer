@@ -123,10 +123,10 @@ document.getElementById("amperage").innerHTML=amps2s + " AMPS @ 240V";
 }
 function timeLoad()
 {
-//var audio = new Audio('beep.mp3');
-//audio.play();
+var audio = new Audio('beep.mp3');
+audio.play();
 var secDelay = document.getElementById("seconds").value * 1000;
-//setTimeout(function(){playBeep()},secDelay);
+setTimeout(function(){playBeep()},secDelay);
 var secCntDwn = document.getElementById("seconds").value;
 var myVar=setInterval(function(){myTimer()},1000);
 function myTimer()
@@ -136,8 +136,8 @@ function myTimer()
 }
 function playBeep()
 {
-//var audio = new Audio('beep.mp3');
-//audio.play();
+var audio = new Audio('beep.mp3');
+audio.play();
 	secCntDwn=secCntDwn - 1;
 	document.getElementById("CountDown").innerHTML=secCntDwn + " Seconds Left";
 clearInterval(myVar);
