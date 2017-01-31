@@ -43,7 +43,8 @@ body {
     </form> 
 
         <p id="testResult"></p>
-        <p id="amperage"></p>
+        <p id="amperage1s"></p>
+	<p id="amperage"></p>
         <p id="cautionTag"></p>
         <!--<p id="temp"></p>-->
 
@@ -93,7 +94,8 @@ function RstTmeCntr() {
         document.getElementById("widgets").value = "";
         document.getElementById("testResult").innerHTML = "";
         document.getElementById("cautionTag").innerHTML = "";
-        document.getElementById("amperage").innerHTML= "";
+        document.getElementById("amperage1s").innerHTML= "";
+	document.getElementById("amperage").innerHTML= "";
         document.getElementById("seconds").value = "0";
     }
 //new ends  _________________________________________________________________________________________________________________________________ 
@@ -116,7 +118,7 @@ document.getElementById("cautionTag").innerHTML=dangerous;
 //document.getElementById("temp").innerHTML=kw + " KW";
 //1S Use 120v divider
 amps1s = result / 120;
-document.getElementById("amperage").innerHTML=amps1s + " AMPS @ 120V<br />";
+document.getElementById("amperage1s").innerHTML=amps1s + " AMPS @ 120V<br />";
 //2S Use 240v divider
 amps2s = result / 240;
 document.getElementById("amperage").innerHTML=amps2s + " AMPS @ 240V";
