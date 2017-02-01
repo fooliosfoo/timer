@@ -1,8 +1,31 @@
-//use a version variable to provide a means for the service worker to update itself
+"use strict";
+
+console.log('WORKER: executing.');
+
+/* A version number is useful when updating the worker logic,
+   allowing you to remove outdated cache entries during the update.
+*/
 var version = 'v1::';
-//install event
+
+/* These resources will be downloaded and cached by the service worker
+   during the installation process. If any resource fails to be downloaded,
+   then the service worker won't be installed either.
+*/
+var offlineFundamentals = [
+  '',
+  '/index.html',
+  '/sw.js'
+];
+
+/* The install event fires when the service worker is first installed.
+   You can use this event to prepare the service worker to be able to serve
+   files while visitors are offline.
+*/
 self.addEventListener("install", function(event) {
   console.log('WORKER: install event in progress.');
+  /* Using event.waitUntil(p) blocks the installation process on the provided
+     promise. If the promise is rejected, the service worker won't be installed.
+  */
   event.waitUntil(
     /* The caches built-in is a promise-based API that helps you cache responses,
        as well as finding and deleting them.
@@ -15,21 +38,22 @@ self.addEventListener("install", function(event) {
       .open(version + 'fundamentals')
       .then(function(cache) {
         /* After the cache is opened, we can fill it with the offline fundamentals.
-           The method below will add all resources we've indicated to the cache,
-           after making HTTP requests for each of them.
+           The method below will add all resources in `offlineFundamentals` to the
+           cache, after making requests for them.
         */
-        return cache.addAll([
-          '/',
-          '/css/global.css',
-          '/js/global.js'
-        ]);
+        return cache.addAll(offlineFundamentals);
       })
       .then(function() {
         console.log('WORKER: install completed');
       })
   );
 });
-//fetch event
+
+/* The fetch event fires whenever a page controlled by this service worker requests
+   a resource. This isn't limited to `fetch` or even XMLHttpRequest. Instead, it
+   comprehends even the request for the HTML page on first load, as well as JS and
+   CSS resources, fonts, any images, etc.
+*/
 self.addEventListener("fetch", function(event) {
   console.log('WORKER: fetch event in progress.');
 
@@ -112,8 +136,8 @@ self.addEventListener("fetch", function(event) {
                e.g: `return caches.match('/some/cached/image.png')`
              - You should also consider the origin. It's easier to decide what
                "unavailable" means for requests against your origins than for requests
-               against a third party, such as an ad provider
-             - Generate a Response programmaticaly, as shown below, and return that
+               against a third party, such as an ad provider.
+             - Generate a Response programmaticaly, as shown below, and return that.
           */
 
           console.log('WORKER: fetch request failed in both cache and network.');
@@ -132,7 +156,13 @@ self.addEventListener("fetch", function(event) {
       })
   );
 });
-//activate updates the service worker
+
+/* The activate event fires after a service worker has been successfully installed.
+   It is most useful when phasing out an older version of a service worker, as at
+   this point you know that the new worker was installed correctly. In this example,
+   we delete old caches that don't match the version in the worker we just finished
+   installing.
+*/
 self.addEventListener("activate", function(event) {
   /* Just like with the install event, event.waitUntil blocks activate on a promise.
      Activation will fail unless the promise is fulfilled.
