@@ -9,7 +9,6 @@
 <style>
 body {
   width: 300px;
-  /*height: 320px;*/
   height: 520px;
   margin: 0px auto;
   padding: 10px;
@@ -120,8 +119,8 @@ function wattsFunction(){
   document.getElementById("amperage").innerHTML=amps2s + " AMPS @ 240V";
 }
 function timeLoad(){
-  var audio = new Audio('beep.mp3');
-  audio.play();
+  //var audio = new Audio('beep.mp3');
+  //audio.play();
   var secDelay = document.getElementById("seconds").value * 1000;
   setTimeout(function(){playBeep()},secDelay);
   var secCntDwn = document.getElementById("seconds").value;
@@ -132,8 +131,8 @@ function myTimer(){
   document.getElementById("CountDown").innerHTML=secCntDwn + " Seconds Left";
 }
 function playBeep(){
-  var audio = new Audio('beep.mp3');
-  audio.play();
+  //var audio = new Audio('beep.mp3');
+  //audio.play();
   secCntDwn=secCntDwn - 1;
   document.getElementById("CountDown").innerHTML=secCntDwn + " Seconds Left";
   clearInterval(myVar);
