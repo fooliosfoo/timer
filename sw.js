@@ -13,8 +13,8 @@ var version = 'v1::';
 */
 var offlineFundamentals = [
   '',
-  '/index.html',
-  '/sw.js'
+  'https://fooliosfoo.github.io/timer/index.html',
+  'https://fooliosfoo.github.io/timer/sw.js'
 ];
 
 /* The install event fires when the service worker is first installed.
