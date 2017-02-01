@@ -20,7 +20,6 @@ body {
 }
 </style>
 <script>
-// ServiceWorker is a progressive technology. Ignore unsupported browsers
 if ('serviceWorker' in navigator) {
   console.log('CLIENT: service worker registration in progress.');
   navigator.serviceWorker.register('https://github.com/fooliosfoo/timer/sw.js').then(function() {
@@ -40,7 +39,7 @@ if ('serviceWorker' in navigator) {
 <button onClick="PlseTimer = setInterval(myCounter, 1000)" id="StrtBttn" style="height:66px; width:100%; background-color: white; color: green; font-size: 20px;">Start Timer</button>
 <button onClick="RstTmeCntr()" id="StpBttn" style="height:160px; width:100%; background-color: white; color: green; font-size: 20px;">Stop Timer</button>
 <p><span id="TimeCntr">0</span> Seconds</p>
-<form id="frm1" action=""> <!--13 sec @ 10 revolutions is just under 40 Amp break point-->
+<form id="frm1" action="">
 # of Widgets: <input type="text" autofocus size="3" maxlength="3" id="widgets" name="w" value="" onchange = "wattsFunction();" onkeypress = "this.onchange();" oninput    = "this.onchange();">
 <br>
 # of Seconds: <input type="text" size="2" maxlength="2" id="seconds" name="s" value="0" onchange = "wattsFunction();" onkeypress = "this.onchange();" oninput    = "this.onchange();" readonly>
