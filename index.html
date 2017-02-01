@@ -109,12 +109,14 @@ function wattsFunction(){
   //wattCnv = result / 1000;
   //kw = wattCnv.toFixed(2);
   //1S Use 120v divider
-  //amps1s = result / 120;
-  amps1s = parseInt(result / 120);
+  amps1s = result / 120;
+  //amps1s = parseInt(result / 120); //removes decimal place
+  amps1s.toFixed(2); //converts to string with two decimal places
   document.getElementById("amperage1s").innerHTML=amps1s + " AMPS @ 120V";
   //2S Use 240v divider
-  //amps2s = result / 240;
-  amps2s = parseInt(result / 240);
+  amps2s = result / 240;
+  //amps2s = parseInt(result / 240);
+  amps2s.toFixed(2);
   document.getElementById("amperage").innerHTML=amps2s + " AMPS @ 240V";
 }
 function timeLoad(){
