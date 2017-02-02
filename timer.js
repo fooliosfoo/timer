@@ -34,10 +34,8 @@ function RstLbls() {
   dangerous=(result>4680)?"High":"Low";
   document.getElementById("cautionTag").innerHTML=dangerous;
   amps1s = (result / 120).toFixed(2);
-  //amps1s.toFixed(2);
   document.getElementById("amperage1s").innerHTML=amps1s + " AMPS @ 120V";
   amps2s = (result / 240).toFixed(2);
-  //amps2s.toFixed(2);
   document.getElementById("amperage").innerHTML=amps2s + " AMPS @ 240V";
 }
   function timeLoad(){
