@@ -28,7 +28,7 @@ function RstLbls() {
   var result = "";
   var time_widgets = 3600 * x;
   //result = time_widgets / y;
-  result = Math.round(time_widgets / y) / 100  //returns 00.00
+  result = Math.round((time_widgets / y) * 100) / 100  //returns 00.00
   //result = parsefloat((time_widgets / y).toFixed(2));  //Breaks Code
   wattCnv = result / 1000;
   kw = wattCnv.toFixed(2);
