@@ -26,9 +26,11 @@ function RstLbls() {
   var x = document.getElementById("widgets").value;
   var y = document.getElementById("seconds").value;
   var result = "";
+  var results = "";
   var time_widgets = 3600 * x;
-  //result = time_widgets / y;
-  result = Math.round((time_widgets / y) * 100) / 100  //returns 00.00
+  var results = time_widgets / y;
+  var result = round(results, 2);
+  //result = Math.round((time_widgets / y) * 100) / 100  //returns 00.00
   //result = parsefloat((time_widgets / y).toFixed(2));  //Breaks Code
   wattCnv = result / 1000;
   kw = wattCnv.toFixed(2);
@@ -54,4 +56,7 @@ function playBeep(){
   secCntDwn=secCntDwn - 1;
   document.getElementById("CountDown").innerHTML=secCntDwn + " Seconds Left";
   clearInterval(myVar);
+}
+function round(value, decimals) {
+  return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 }
