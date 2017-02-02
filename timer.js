@@ -27,7 +27,8 @@ function RstLbls() {
   var y = document.getElementById("seconds").value;
   var result = "";
   var time_widgets = 3600 * x;
-  result = time_widgets / y;
+  //result = time_widgets / y;
+  result = parsefloat((time_widgets / y).toFixed(2));  
   wattCnv = result / 1000;
   kw = wattCnv.toFixed(2);
   document.getElementById("testResult").innerHTML=result + " Watts = " + kw + " KW";
