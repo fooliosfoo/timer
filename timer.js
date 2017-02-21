@@ -1,3 +1,5 @@
+var kwhT;
+var kw;
 var c = 0;
 function myCounter() {
   RstLbls();
@@ -17,18 +19,18 @@ function myCounter() {
 function RstLbls() {
   document.getElementById("widgets").value = "";
   document.getElementById("testResult").innerHTML = "";
-  document.getElementById("cautionTag").innerHTML = "";
+  //document.getElementById("cautionTag").innerHTML = "";
   document.getElementById("amperage1s").innerHTML= "";
   document.getElementById("amperage").innerHTML= "";
   document.getElementById("seconds").value = "0";
+  rstTbleFlds();
 }
   function wattsFunction(){
   var x = document.getElementById("widgets").value;
   var y = document.getElementById("seconds").value;
-  var k = document.getElementById("khVal").value;
   var result = "";
   var results = "";
-  var time_widgets = 3600 * x * k;
+  var time_widgets = 3600 * x;
   var results = time_widgets / y;
   var result = round(results, 2);
   //result = Math.round((time_widgets / y) * 100) / 100  //returns 00.00
@@ -36,12 +38,17 @@ function RstLbls() {
   wattCnv = result / 1000;
   kw = wattCnv.toFixed(2);
   document.getElementById("testResult").innerHTML=result + " Watts = " + kw + " KW";
-  dangerous=(result>4680)?"High":"Low";
-  document.getElementById("cautionTag").innerHTML=dangerous;
+  //dangerous=(result>4680)?"High":"Low";
+  //document.getElementById("cautionTag").innerHTML=dangerous;
   amps1s = (result / 120).toFixed(2);
   document.getElementById("amperage1s").innerHTML=amps1s + " AMPS @ 120V";
   amps2s = (result / 240).toFixed(2);
   document.getElementById("amperage").innerHTML=amps2s + " AMPS @ 240V";
+  
+  //kwh=kw;
+  calculate();
+  //document.getElementById("kw?").innerHTML=amps2s + " AMPS @ 240V";
+      
 }
   function timeLoad(){
   var secDelay = document.getElementById("seconds").value * 1000;
@@ -61,6 +68,27 @@ function playBeep(){
 function round(value, decimals) {
   return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 }
-function khFunction() {
-  RstLbls();
+
+//added calculations for table
+function calculate() {
+//watts = document.calculator.watts.value;
+//kwhT = document.getElementById("testResult").innerHTML;
+//kwhT = 10;
+kwhT = kw;
+hours = document.calculator.hours.value;
+days = document.calculator.days.value;
+rate = 0.13;
+
+kwhTot = kwhT * hours * days * rate;
+    kwpermonth = kwhT * hours * days;
+	costpermonth = kwhTot;
+	costperyear = costpermonth*12;
+	document.calculator.kwh.value=kwpermonth.toFixed();
+	document.calculator.costpermonth.value = round(costpermonth, 2);
+	document.calculator.costperyear.value = round(costperyear, 2);
+}
+function rstTbleFlds(){
+    document.calculator.kwh.value="";
+	document.calculator.costpermonth.value = "";
+	document.calculator.costperyear.value = "";
 }
