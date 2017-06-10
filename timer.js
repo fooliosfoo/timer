@@ -78,7 +78,8 @@ kwhT = kw;
 hours = document.calculator.hours.value;
 days = document.calculator.days.value;
 //rate = 0.13;
-rate = 0.133296;
+//rate = 0.133296;
+rate = 0.110433; //Residential Rate 711
 	
 kwhTot = kwhT * hours * days * rate;
     kwpermonth = kwhT * hours * days;
