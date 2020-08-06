@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <script src="timer.js"></script>
+<script src="NoSleep.min.js"></script>
 <link rel="icon" 
   type="image/png" 
   href="icon.png">
@@ -54,6 +55,25 @@ Enter # of Widgets: <input type="text" autofocus size="3" maxlength="3" id="widg
 var post = document.getElementById('StrtBttn');
 var StpBttnPst = document.getElementById('StpBttn');
 StpBttnPst.style.display = 'none';
+	
+		var noSleep = new NoSleep();
+
+      var wakeLockEnabled = false;
+      var toggleEl = document.querySelector("#StrtBttn");
+      toggleEl.addEventListener('click', function() {
+        if (!wakeLockEnabled) {
+          noSleep.enable(); // keep the screen on!
+          wakeLockEnabled = true;
+          //toggleEl.value = "Wake Lock is enabled";
+          //document.body.style.backgroundColor = "green";
+        } else {
+          noSleep.disable(); // let the screen turn off.
+          wakeLockEnabled = false;
+          //toggleEl.value = "Wake Lock is disabled";
+          //document.body.style.backgroundColor = "";
+        }
+      }, false);
+	
 </script>
 <FORM ACTION="/electricity/" METHOD=POST name=calculator id=calculator>
 <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=4>
