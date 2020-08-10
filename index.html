@@ -2,7 +2,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<script src="compressed.js"></script>
+<script src="timer.js"></script>
 <link rel="icon" 
   type="image/png" 
   href="icon.png">
@@ -33,18 +33,16 @@ if ('serviceWorker' in navigator) {
 </head>
 <body>
 <div style="border-radius:12px; border:1px solid silver; background:#e6ecff; padding:6px;">
-<p>1PH 1S/2S - Kh <input type="text" autofocus size="4" maxlength="4" id="khVal" name="kh" class="khtxtbx" value="1.0" onchange = "khFunction();" onkeypress = "this.onchange();" oninput    = "this.onchange();"> 
-<a href="https://www.nipsco.com/docs/default-source/electric-tariffs-10-01-2016/rate-711.pdf"> [ -- Rate 711 -- ]</a>
-<!-- <a href="https://fooliosfoo.github.io/3PH-Timer/"> [ -- 3PH Link -- ]</a> -->
-
+<p>Watt Load Check - 
+1PH 1S/2S - Kh <input type="text" autofocus size="4" maxlength="4" id="khVal" name="kh" class="khtxtbx" value="1.0" onchange = "khFunction();" onkeypress = "this.onchange();" oninput    = "this.onchange();">
 </p>
 <button onClick="PlseTimer = setInterval(myCounter, 1000)" id="StrtBttn" style="height:66px; width:100%; background-color: white; color: green; font-size: 20px;">Start Timer</button>
-<button onClick="RstTmeCntr()" id="StpBttn" style="height:300px; width:100%; background-color: white; color: red; font-size: 20px;">Stop Timer</button>
+<button onClick="RstTmeCntr()" id="StpBttn" style="height:160px; width:100%; background-color: white; color: red; font-size: 20px;">Stop Timer</button>
 <p><span id="TimeCntr">0</span> Seconds</p>
 <form id="frm1" action="">
 Enter # of Widgets: <input type="text" autofocus size="3" maxlength="3" id="widgets" name="w" value="" onchange = "wattsFunction();" onkeypress = "this.onchange();" oninput    = "this.onchange();">
 <br>
-# of Seconds Timed: <input type="text" size="4" maxlength="4" id="seconds" name="s" value="0" onchange = "wattsFunction();" onkeypress = "this.onchange();" oninput    = "this.onchange();" readonly>
+# of Seconds Timed: <input type="text" size="2" maxlength="2" id="seconds" name="s" value="0" onchange = "wattsFunction();" onkeypress = "this.onchange();" oninput    = "this.onchange();" readonly>
 </form> 
 <p id="testResult"></p>
 <p id="amperage1s"></p>
@@ -54,25 +52,6 @@ Enter # of Widgets: <input type="text" autofocus size="3" maxlength="3" id="widg
 var post = document.getElementById('StrtBttn');
 var StpBttnPst = document.getElementById('StpBttn');
 StpBttnPst.style.display = 'none';
-	
-		var noSleep = new NoSleep();
-
-      var wakeLockEnabled = false;
-      var toggleEl = document.querySelector("#StrtBttn");
-      toggleEl.addEventListener('click', function() {
-        if (!wakeLockEnabled) {
-          noSleep.enable(); // keep the screen on!
-          wakeLockEnabled = true;
-          //toggleEl.value = "Wake Lock is enabled";
-          //document.body.style.backgroundColor = "green";
-        } else {
-          noSleep.disable(); // let the screen turn off.
-          wakeLockEnabled = false;
-          //toggleEl.value = "Wake Lock is disabled";
-          //document.body.style.backgroundColor = "";
-        }
-      }, false);
-	
 </script>
 <FORM ACTION="/electricity/" METHOD=POST name=calculator id=calculator>
 <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=4>
@@ -168,7 +147,6 @@ StpBttnPst.style.display = 'none';
 </TD>
 </TR>
 </TABLE>
-    <p align=center><a href="https://emsuite.000webhostapp.com/em/phpBB3/index.php"> [ ------ Electric Metering Forum ------ ]</a></p>
 </div>
 </body>
 </html>
