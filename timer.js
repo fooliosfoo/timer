@@ -19,7 +19,7 @@ function myCounter() {
 function RstLbls() {
   document.getElementById("widgets").value = "";
   document.getElementById("testResult").innerHTML = "";
-  //document.getElementById("cautionTag").innerHTML = "";
+  document.getElementById("cautionTag").innerHTML = "";
   document.getElementById("amperage1s").innerHTML= "";
   document.getElementById("amperage").innerHTML= "";
   document.getElementById("seconds").value = "0";
@@ -38,8 +38,8 @@ function RstLbls() {
   wattCnv = result / 1000;
   kw = wattCnv.toFixed(2);
   document.getElementById("testResult").innerHTML=result + " Watts = " + kw + " KW";
-  //dangerous=(result>4680)?"High":"Low";
-  //document.getElementById("cautionTag").innerHTML=dangerous;
+  dangerous=(result>4680)?"High":"Low";
+  document.getElementById("cautionTag").innerHTML=dangerous;
   amps1s = (result / 120).toFixed(2);
   document.getElementById("amperage1s").innerHTML=amps1s + " AMPS @ 120V";
   amps2s = (result / 240).toFixed(2);
