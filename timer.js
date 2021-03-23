@@ -38,7 +38,7 @@ function RstLbls() {
   wattCnv = result / 1000;
   kw = wattCnv.toFixed(2);
   document.getElementById("testResult").innerHTML=result + " Watts = " + kw + " KW";
-  dangerous=(result>4680)?"High":"Low";
+  dangerous=(result>4680)?"High Amps, Turn off loads before pulling meter.":"Amps Under 40";
   document.getElementById("cautionTag").innerHTML=dangerous;
   amps1s = (result / 120).toFixed(2);
   document.getElementById("amperage1s").innerHTML=amps1s + " AMPS @ 120V";
