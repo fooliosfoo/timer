@@ -38,9 +38,9 @@ function RstLbls() {
   wattCnv = result / 1000;
   kw = wattCnv.toFixed(2);
   document.getElementById("testResult").innerHTML=result + " Watts = " + kw + " KW";
-  dangerous=(result>4680)?"High Amps-Turn Off Loads Before Pulling Meter":"Amps Under 40-OK";
+  dangerous=(result>9360)?"High Amps-Turn Off Loads Before Pulling Meter":"Amps Under 40-OK";
   document.getElementById("cautionTag").innerHTML=dangerous;
-  dangerous=(result>4680)?document.getElementById("cautionTag").style.color = "red":document.getElementById("cautionTag").style.color = "green";
+  dangerous=(result>9360)?document.getElementById("cautionTag").style.color = "red":document.getElementById("cautionTag").style.color = "green";
   amps1s = (result / 120).toFixed(2);
   document.getElementById("amperage1s").innerHTML=amps1s + " AMPS @ 120V";
   amps2s = (result / 240).toFixed(2);
