@@ -20,6 +20,7 @@ function RstLbls() {
   document.getElementById("widgets").value = "";
   document.getElementById("testResult").innerHTML = "";
   document.getElementById("cautionTag").innerHTML = "";
+  document.getElementById("cautionTag2").innerHTML = "";
   document.getElementById("amperage1s").innerHTML= "";
   document.getElementById("amperage").innerHTML= "";
   document.getElementById("seconds").value = "0";
