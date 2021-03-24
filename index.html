@@ -46,10 +46,22 @@ Enter # of Widgets: <input type="text" autofocus size="3" maxlength="3" id="widg
 <br>
 # of Seconds Timed: <input type="text" size="2" maxlength="2" id="seconds" name="s" value="0" onchange = "wattsFunction();" onkeypress = "this.onchange();" oninput    = "this.onchange();" readonly>
 </form> 
-<p id="testResult"></p>
+<table>
+  <tr>
+      <td id="testResult"></td>
+  </tr>
+  <tr>
+      <td id="amperage1s"></td>
+  </tr>
+  <tr>
+      <td id="amperage"></td> <td id="cautionTag"></td>
+  </tr>
+</table>
+<!--<p id="testResult"></p>
 <p id="amperage1s"></p>
 <p id="amperage"></p>
 <p id="cautionTag"></p>
+-->
 <script>
 var post = document.getElementById('StrtBttn');
 var StpBttnPst = document.getElementById('StpBttn');
