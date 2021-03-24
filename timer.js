@@ -41,11 +41,11 @@ function RstLbls() {
   dangerous=(result>9360)?"HIGH AMPS":"Low Amps";
   //dangerous=(result>4680)?"HIGH AMPS":"Low Amps";
   document.getElementById("cautionTag").innerHTML=dangerous;
-  //dangerous=(result>9360)?document.getElementById("cautionTag").style.color = "red":document.getElementById("cautionTag").style.color = "green";
+  dangerous=(result>9360)?document.getElementById("cautionTag").style.color = "red":document.getElementById("cautionTag").style.color = "green";
   //dangerous=(result>4680)?document.getElementById("cautionTag").style.color = "red":document.getElementById("cautionTag").style.color = "green";
   dangerous2=(result>4680)?"HIGH AMPS":"Low Amps";
   document.getElementById("cautionTag2").innerHTML=dangerous2;
-  //dangerous2=(result>4680)?document.getElementById("cautionTag2").style.color = "red":document.getElementById("cautionTag2").style.color = "green";
+  dangerous2=(result>4680)?document.getElementById("cautionTag2").style.color = "red":document.getElementById("cautionTag2").style.color = "green";
   amps1s = (result / 120).toFixed(2);
   document.getElementById("amperage1s").innerHTML=amps1s + " AMPS @ 120V";
   amps2s = (result / 240).toFixed(2);
