@@ -86,10 +86,10 @@ function calculate() {
 kwhT = kw;
 hours = document.calculator.hours.value;
 days = document.calculator.days.value;
-//rate = 0.13;
-//rate = 0.133296;
 //rate = 0.110433; //Residential Rate 711
-rate = 0.122116 //Residential Rate 811
+//rate = 0.122116 //Residential Rate 811
+//rate = 0.133296; //Residential Rate 821
+rate = 0.18884 //Residential Rate 821
 	
 kwhTot = kwhT * hours * days * rate;
     kwpermonth = kwhT * hours * days;
